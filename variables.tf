@@ -1,9 +1,9 @@
 variable "instances" {
   default = {
-    "jenkins"      = "Jenkins"
-    "jenkins_node" = "Jenkins-Node"
-    "sonarqube"    = "SonarQube"
-    "nexus"        = "Nexus"
+    "jenkins"      = "jenkins"
+    "jenkins_node" = "jenkins-node"
+    "sonarqube"    = "sonarqube"
+    "nexus"        = "nexus"
   }
 }
 
