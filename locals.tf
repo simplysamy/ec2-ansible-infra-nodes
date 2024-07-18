@@ -27,6 +27,20 @@ locals {
           to_port     = 8080
           protocol    = "tcp"
           cidr_blocks = [var.access_ip]
+        
+        nexus = {
+          from_port   = 8081
+          to_port     = 8081
+          protocol    = "tcp"
+          cidr_blocks = [var.access_ip]
+        }
+
+        sonarqube = {
+          from_port   = 9000
+          to_port     = 9000
+          protocol    = "tcp"
+          cidr_blocks = [var.access_ip]
+        }
   }
       }
     }
