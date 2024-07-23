@@ -29,3 +29,13 @@ variable "key_name" {
 variable "access_ip" {
  type = string
 }
+
+variable "root_vol_type" {
+   type   = string
+   default = "gp3"
+}
+
+variable "root_vol_size" {
+   type   = number
+   default = 15
+}

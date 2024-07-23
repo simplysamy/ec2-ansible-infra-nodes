@@ -14,6 +14,11 @@ resource "aws_instance" "my_instances" {
                 chmod 600 ~/.ssh/authorized_keys
                 EOF
 
+   root_block_device {
+    volume_size = var.root_vol_size  # Root volume size in GB
+    volume_type = var.root_vol_type
+  }
+
   tags = {
     Name  = "my-instance-${each.key}"
     "Tag" = each.value
