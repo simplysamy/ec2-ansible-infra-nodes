@@ -29,7 +29,6 @@ resource "aws_security_group" "ansible_node_sg" {
   name_prefix = "instance_sg"
   description = "Allow inbound traffic on port 22, 80 & 8080"
   vpc_id      = aws_default_vpc.default.id
-  for_each               = var.instances
 
  // Add common ingress rules (SSH and HTTP)
   ingress {
@@ -49,7 +48,9 @@ resource "aws_security_group" "ansible_node_sg" {
 // Add specific ingress rules for each instance accordig to the tags
  dynamic "ingress" {
     # for_each    = local.security_groups.public.ingress
-    for_each = [for sg in local.security_groups.public.ingress : sg if contains(keys(var.instances), each.key)]
+    for_each = [for sg in local.security_groups.public.ingress : sg if contains(keys(var.instances), sg.name)]
+    
+
 
     content {
       from_port   = ingress.value.from_port
