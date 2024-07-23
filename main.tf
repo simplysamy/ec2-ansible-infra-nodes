@@ -29,6 +29,7 @@ resource "aws_security_group" "ansible_node_sg" {
   name_prefix = "instance_sg"
   description = "Allow inbound traffic on port 22, 80 & 8080"
   vpc_id      = aws_default_vpc.default.id
+  for_each               = var.instances
 
  // Add common ingress rules (SSH and HTTP)
   ingress {
