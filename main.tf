@@ -47,8 +47,7 @@ resource "aws_security_group" "ansible_node_sg" {
 
 // Add specific ingress rules for each instance accordig to the tags
  dynamic "ingress" {
-    # for_each    = local.security_groups.public.ingress
-    for_each = [for sg in local.security_groups.public.ingress : sg if contains(keys(var.instances), sg.name)]
+    for_each = {for key, sg in local.security_groups.public.ingress : key => sg if contains(keys(var.instances), key)}
     
 
 
